@@ -1,6 +1,19 @@
 <?php
     $title='Admin-Login';
     include 'include.php';
+
+    if(isset($_POST['submit']))
+    {
+        if(!empty($_POST))
+        {
+            $result = $auth->login();
+        }
+        //EMPTY FORM CHECK ENDS HERE
+        else
+        {
+            //WAIT FOR IT
+        }
+    }
 ?>
 <div class="container">
     <div class="admin-login row">
@@ -8,8 +21,8 @@
             <div class="alert alert-info">ADMIN LOGIN</div>
             <form id="login-form" action="" method="POST">
                 <div class="form-group">
-                    <label for="username">Username:</label>
-                    <input type="text" name="username" id="username" class="form-control" placeholder="Username">
+                    <label for="email">Email:</label>
+                    <input type="email" name="email" id="email" class="form-control" placeholder="example@abc.com">
                 </div>
                 <div class="form-group">
                     <label for="password">Password:</label>
