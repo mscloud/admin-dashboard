@@ -6,12 +6,7 @@
     {
         if(!empty($_POST))
         {
-            $result = $auth->login();
-        }
-        //EMPTY FORM CHECK ENDS HERE
-        else
-        {
-            //WAIT FOR IT
+            $result =$auth->login();
         }
     }
 ?>
@@ -19,6 +14,21 @@
     <div class="admin-login row">
         <div class="col-xs-12 col-sm-8 col-md-offset-3 col-md-6">
             <div class="alert alert-info">ADMIN LOGIN</div>
+        </div>
+        <?php
+            if(isset($result))
+            {
+                echo "<div class=' alert alert-danger col-xs-12 col-sm-8 col-md-offset-3 col-md-6'>";
+
+                for($i=0;$i<count($result);$i++)
+                {
+                    echo "<p>{$result[$i]}</p>";
+                }
+
+                echo "</div>";
+            }
+        ?>
+        <div class="col-xs-12 col-sm-8 col-md-offset-3 col-md-6">
             <form id="login-form" action="" method="POST">
                 <div class="form-group">
                     <label for="email">Email:</label>
