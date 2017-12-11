@@ -50,8 +50,11 @@ class Authentication extends Database
             //checking The number of rows returned to check whether user exist or not
             if(($result->rowCount()==1))
             {
-               echo "Login success";
-               // Do some stuff here
+               session_start();
+               $row=$result->fetch(); //fetching userdata
+               $_SESSION['username']=$row['username']; //setting session variable
+               header('Location: admin.php'); //redirecting to the Dashboard page
+               exit();
             }
             else
             {
