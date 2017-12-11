@@ -23,7 +23,7 @@ class Database
     }
 
     /*Executing Select prepare statment
-     This function recieve two parameters
+     This method recieve two parameters
      one is the array of data to be used and another one is prepared statement
     */
 
