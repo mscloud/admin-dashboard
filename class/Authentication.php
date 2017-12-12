@@ -50,8 +50,13 @@ class Authentication extends Database
             //checking The number of rows returned to check whether user exist or not
             if(($result->rowCount()==1))
             {
-               session_start();
+
                $row=$result->fetch(); //fetching userdata
+               if(isset($_POST['remember'])) //checking user Remember option?
+               {
+                    setcookie('username',$row['username'],time()+30*24*60*60);
+               }
+               session_start();
                $_SESSION['username']=$row['username']; //setting session variable
                header('Location: admin.php'); //redirecting to the Dashboard page
                exit();
