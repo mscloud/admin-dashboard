@@ -1,8 +1,13 @@
 <?php
     $title='Admin-Login';
     include 'include.php';
+    if(isset($_COOKIE['username']) && !empty($_COOKIE['username'])) //checking cookie
+    {
+        header('Location:admin.php');
+        exit();
+    }
 
-    if(isset($_POST['submit']))
+    if(isset($_POST['submit'])) //Submiting the login Form
     {
         if(!empty($_POST))
         {
@@ -39,7 +44,7 @@
                     <input type="password" name="password" id="password" class="form-control" placeholder="*********">
                 </div>
                 <div class="checkbox">
-                    <label><input type="checkbox" value="">Remember Me?</label>
+                    <label><input name="remember" type="checkbox" value="">Remember Me?</label>
                 </div>
                 <div class="form-group">
                     <input type="submit" name="submit" value="Login" class="btn btn-block text-center btn-primary">
